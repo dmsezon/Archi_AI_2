@@ -4,6 +4,11 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+// ======================================================================
+// === LINIA DO DEBUGOWANIA - SPRAWDZAMY, CO WIDZI APLIKACJA ===
+console.log("Klucz API Firebase z .env:", import.meta.env.VITE_FIREBASE_API_KEY);
+// ======================================================================
+
 // Ten obiekt odczytuje bezpieczne klucze z Twojego pliku .env.local
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
