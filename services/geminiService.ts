@@ -1,16 +1,14 @@
+// services/geminiService.ts
+
 import { GoogleGenAI, Modality } from "@google/genai";
 import { ImageData } from '../types';
 
-// Lazily initialize the AI client to avoid accessing process.env on startup,
-// which causes a crash in the browser environment.
 let ai: GoogleGenAI | null = null;
 
 const getAi = (): GoogleGenAI => {
   if (!ai) {
-    // This will still throw an error if process.env.API_KEY is not available,
-    // but it will happen during the first API call instead of on app load.
-    // The error will be caught by the calling function in the Editor component.
-    ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // TUTAJ JEST POPRAWKA: Używamy import.meta.env, tak jak wymaga tego Vite
+    ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
   }
   return ai;
 };
